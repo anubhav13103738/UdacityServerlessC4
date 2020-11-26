@@ -159,14 +159,14 @@
                     "dynamodb:UpdateItem",
                     "dynamodb:Query"
                   ],
-                  "Resource": "arn:aws:dynamodb:ap-south-1:*:table/Todos-dev"
+                  "Resource": "arn:aws:dynamodb:ap-south-1:*:table/Todos-v2-dev"
                 },
                 {
                   "Effect": "Allow",
                   "Action": [
                     "dynamodb:Query"
                   ],
-                  "Resource": "arn:aws:dynamodb:ap-south-1:*:table/Todos-dev/index/UserIdIndex"
+                  "Resource": "arn:aws:dynamodb:ap-south-1:*:table/Todos-v2-dev/index/UserIdIndex"
                 },
                 {
                   "Effect": "Allow",
@@ -174,7 +174,7 @@
                     "s3:PutObject",
                     "s3:GetObject"
                   ],
-                  "Resource": "arn:aws:s3:::serverless-anubmish-udagram-images-final-project-dev/*"
+                  "Resource": "arn:aws:s3:::serverless-anubmish-v2-udagram-images-final-project-dev/*"
                 },
                 {
                   "Effect": "Allow",
@@ -213,7 +213,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/serverless-todo-app/dev/1606211292241-2020-11-24T09:48:12.241Z/serverless-todo-app.zip"
+          "S3Key": "serverless/serverless-todo-app/dev/1606372145152-2020-11-26T06:29:05.152Z/serverless-todo-app.zip"
         },
         "FunctionName": "serverless-todo-app-dev-Auth",
         "Handler": "src/lambda/auth/auth0rs256Authorizer.handler",
@@ -231,9 +231,9 @@
         },
         "Environment": {
           "Variables": {
-            "TODOS_TABLE": "Todos-dev",
+            "TODOS_TABLE": "Todos-v2-dev",
             "USER_ID_INDEX": "UserIdIndex",
-            "IMAGES_S3_BUCKET": "serverless-anubmish-udagram-images-final-project-dev",
+            "IMAGES_S3_BUCKET": "serverless-anubmish-v2-udagram-images-final-project-dev",
             "SIGNED_URL_EXPIRATION": 300,
             "AUTH_0_SECRET_ID": "Auth0Secret-dev",
             "AUTH_0_SECRET_FIELD": "auth0Secret",
@@ -245,14 +245,14 @@
         "AuthLogGroup"
       ]
     },
-    "AuthLambdaVersionK3hMyYyWkbGBjhPfJp74kMjIkmjXtL5zet7bmydBEw": {
+    "AuthLambdaVersionkmn8QVajcDy121HgVZ19VPwSsSZTiQB2Mu99BMCg": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "AuthLambdaFunction"
         },
-        "CodeSha256": "8go4s4YQtkRoeheIM3aBytCNkbAWqscw0TrMC473lDU="
+        "CodeSha256": "XPD8n2cFUshgyoZUvcF7DBvrJhWOjJEDTHBHJyqbLqI="
       }
     },
     "GetTodosLambdaFunction": {
@@ -262,7 +262,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/serverless-todo-app/dev/1606211292241-2020-11-24T09:48:12.241Z/serverless-todo-app.zip"
+          "S3Key": "serverless/serverless-todo-app/dev/1606372145152-2020-11-26T06:29:05.152Z/serverless-todo-app.zip"
         },
         "FunctionName": "serverless-todo-app-dev-GetTodos",
         "Handler": "src/lambda/http/getTodos.handler",
@@ -280,9 +280,9 @@
         },
         "Environment": {
           "Variables": {
-            "TODOS_TABLE": "Todos-dev",
+            "TODOS_TABLE": "Todos-v2-dev",
             "USER_ID_INDEX": "UserIdIndex",
-            "IMAGES_S3_BUCKET": "serverless-anubmish-udagram-images-final-project-dev",
+            "IMAGES_S3_BUCKET": "serverless-anubmish-v2-udagram-images-final-project-dev",
             "SIGNED_URL_EXPIRATION": 300,
             "AUTH_0_SECRET_ID": "Auth0Secret-dev",
             "AUTH_0_SECRET_FIELD": "auth0Secret",
@@ -295,14 +295,14 @@
         "GetTodosLogGroup"
       ]
     },
-    "GetTodosLambdaVersionY8m5wDMI1FYt51R5kf7PEeHfzmEO3KJr6N83pSG1g": {
+    "GetTodosLambdaVersionmVEMnmuerDDK6fbmTlMSJTuU90l3mY7tOqKBYAr5i8": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "GetTodosLambdaFunction"
         },
-        "CodeSha256": "8go4s4YQtkRoeheIM3aBytCNkbAWqscw0TrMC473lDU="
+        "CodeSha256": "XPD8n2cFUshgyoZUvcF7DBvrJhWOjJEDTHBHJyqbLqI="
       }
     },
     "CreateTodoLambdaFunction": {
@@ -312,7 +312,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/serverless-todo-app/dev/1606211292241-2020-11-24T09:48:12.241Z/serverless-todo-app.zip"
+          "S3Key": "serverless/serverless-todo-app/dev/1606372145152-2020-11-26T06:29:05.152Z/serverless-todo-app.zip"
         },
         "FunctionName": "serverless-todo-app-dev-CreateTodo",
         "Handler": "src/lambda/http/createTodo.handler",
@@ -330,9 +330,9 @@
         },
         "Environment": {
           "Variables": {
-            "TODOS_TABLE": "Todos-dev",
+            "TODOS_TABLE": "Todos-v2-dev",
             "USER_ID_INDEX": "UserIdIndex",
-            "IMAGES_S3_BUCKET": "serverless-anubmish-udagram-images-final-project-dev",
+            "IMAGES_S3_BUCKET": "serverless-anubmish-v2-udagram-images-final-project-dev",
             "SIGNED_URL_EXPIRATION": 300,
             "AUTH_0_SECRET_ID": "Auth0Secret-dev",
             "AUTH_0_SECRET_FIELD": "auth0Secret",
@@ -345,14 +345,14 @@
         "CreateTodoLogGroup"
       ]
     },
-    "CreateTodoLambdaVersionp1jWz1kL9upgwkwVTwH5aNl8fautXYdzVNKINqgp8": {
+    "CreateTodoLambdaVersionfMZMKAm1jXgMj7z1MJPrMnhU1OPeXUTIfFgXzWLYM": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "CreateTodoLambdaFunction"
         },
-        "CodeSha256": "8go4s4YQtkRoeheIM3aBytCNkbAWqscw0TrMC473lDU="
+        "CodeSha256": "XPD8n2cFUshgyoZUvcF7DBvrJhWOjJEDTHBHJyqbLqI="
       }
     },
     "UpdateTodoLambdaFunction": {
@@ -362,7 +362,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/serverless-todo-app/dev/1606211292241-2020-11-24T09:48:12.241Z/serverless-todo-app.zip"
+          "S3Key": "serverless/serverless-todo-app/dev/1606372145152-2020-11-26T06:29:05.152Z/serverless-todo-app.zip"
         },
         "FunctionName": "serverless-todo-app-dev-UpdateTodo",
         "Handler": "src/lambda/http/updateTodo.handler",
@@ -380,9 +380,9 @@
         },
         "Environment": {
           "Variables": {
-            "TODOS_TABLE": "Todos-dev",
+            "TODOS_TABLE": "Todos-v2-dev",
             "USER_ID_INDEX": "UserIdIndex",
-            "IMAGES_S3_BUCKET": "serverless-anubmish-udagram-images-final-project-dev",
+            "IMAGES_S3_BUCKET": "serverless-anubmish-v2-udagram-images-final-project-dev",
             "SIGNED_URL_EXPIRATION": 300,
             "AUTH_0_SECRET_ID": "Auth0Secret-dev",
             "AUTH_0_SECRET_FIELD": "auth0Secret",
@@ -395,14 +395,14 @@
         "UpdateTodoLogGroup"
       ]
     },
-    "UpdateTodoLambdaVersionobtAU44NbTCIWqYUrdSWvyy3KMIvqCmxhAOerMErZiQ": {
+    "UpdateTodoLambdaVersionrKBN5MoVOJ01QuGM5VHtuwTYCuSm1PUZ8R56OxJpI": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "UpdateTodoLambdaFunction"
         },
-        "CodeSha256": "8go4s4YQtkRoeheIM3aBytCNkbAWqscw0TrMC473lDU="
+        "CodeSha256": "XPD8n2cFUshgyoZUvcF7DBvrJhWOjJEDTHBHJyqbLqI="
       }
     },
     "DeleteTodoLambdaFunction": {
@@ -412,7 +412,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/serverless-todo-app/dev/1606211292241-2020-11-24T09:48:12.241Z/serverless-todo-app.zip"
+          "S3Key": "serverless/serverless-todo-app/dev/1606372145152-2020-11-26T06:29:05.152Z/serverless-todo-app.zip"
         },
         "FunctionName": "serverless-todo-app-dev-DeleteTodo",
         "Handler": "src/lambda/http/deleteTodo.handler",
@@ -430,9 +430,9 @@
         },
         "Environment": {
           "Variables": {
-            "TODOS_TABLE": "Todos-dev",
+            "TODOS_TABLE": "Todos-v2-dev",
             "USER_ID_INDEX": "UserIdIndex",
-            "IMAGES_S3_BUCKET": "serverless-anubmish-udagram-images-final-project-dev",
+            "IMAGES_S3_BUCKET": "serverless-anubmish-v2-udagram-images-final-project-dev",
             "SIGNED_URL_EXPIRATION": 300,
             "AUTH_0_SECRET_ID": "Auth0Secret-dev",
             "AUTH_0_SECRET_FIELD": "auth0Secret",
@@ -445,14 +445,14 @@
         "DeleteTodoLogGroup"
       ]
     },
-    "DeleteTodoLambdaVersionIQTq36uGwUE8FW9e5RIoUoJqjHo61o4oTA9ZAgQY": {
+    "DeleteTodoLambdaVersionZVTEjS0TBpo8DuL1m0AC1kuP8ke6tbp97Yd3iaQ": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "DeleteTodoLambdaFunction"
         },
-        "CodeSha256": "8go4s4YQtkRoeheIM3aBytCNkbAWqscw0TrMC473lDU="
+        "CodeSha256": "XPD8n2cFUshgyoZUvcF7DBvrJhWOjJEDTHBHJyqbLqI="
       }
     },
     "GenerateUploadUrlLambdaFunction": {
@@ -462,7 +462,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/serverless-todo-app/dev/1606211292241-2020-11-24T09:48:12.241Z/serverless-todo-app.zip"
+          "S3Key": "serverless/serverless-todo-app/dev/1606372145152-2020-11-26T06:29:05.152Z/serverless-todo-app.zip"
         },
         "FunctionName": "serverless-todo-app-dev-GenerateUploadUrl",
         "Handler": "src/lambda/http/generateUploadUrl.handler",
@@ -480,9 +480,9 @@
         },
         "Environment": {
           "Variables": {
-            "TODOS_TABLE": "Todos-dev",
+            "TODOS_TABLE": "Todos-v2-dev",
             "USER_ID_INDEX": "UserIdIndex",
-            "IMAGES_S3_BUCKET": "serverless-anubmish-udagram-images-final-project-dev",
+            "IMAGES_S3_BUCKET": "serverless-anubmish-v2-udagram-images-final-project-dev",
             "SIGNED_URL_EXPIRATION": 300,
             "AUTH_0_SECRET_ID": "Auth0Secret-dev",
             "AUTH_0_SECRET_FIELD": "auth0Secret",
@@ -494,14 +494,14 @@
         "GenerateUploadUrlLogGroup"
       ]
     },
-    "GenerateUploadUrlLambdaVersionZD8nLa8prtWBxPKTUuv0lsOXIJVcmdRc0EajmAaWWI": {
+    "GenerateUploadUrlLambdaVersionAC7ps9edpUFQ69IsBzuJAp5EflpkXhgzpC3GPio5GQ": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "GenerateUploadUrlLambdaFunction"
         },
-        "CodeSha256": "8go4s4YQtkRoeheIM3aBytCNkbAWqscw0TrMC473lDU="
+        "CodeSha256": "XPD8n2cFUshgyoZUvcF7DBvrJhWOjJEDTHBHJyqbLqI="
       }
     },
     "ApiGatewayRestApi": {
@@ -959,7 +959,7 @@
         "Type": "TOKEN"
       }
     },
-    "ApiGatewayDeployment1606211268846": {
+    "ApiGatewayDeployment1606372118992": {
       "Type": "AWS::ApiGateway::Deployment",
       "Properties": {
         "RestApiId": {
@@ -1256,14 +1256,14 @@
                     "dynamodb:UpdateItem",
                     "dynamodb:Query"
                   ],
-                  "Resource": "arn:aws:dynamodb:ap-south-1:*:table/Todos-dev"
+                  "Resource": "arn:aws:dynamodb:ap-south-1:*:table/Todos-v2-dev"
                 },
                 {
                   "Effect": "Allow",
                   "Action": [
                     "dynamodb:Query"
                   ],
-                  "Resource": "arn:aws:dynamodb:ap-south-1:*:table/Todos-dev/index/UserIdIndex"
+                  "Resource": "arn:aws:dynamodb:ap-south-1:*:table/Todos-v2-dev/index/UserIdIndex"
                 },
                 {
                   "Effect": "Allow",
@@ -1271,21 +1271,21 @@
                     "s3:PutObject",
                     "s3:GetObject"
                   ],
-                  "Resource": "arn:aws:s3:::serverless-anubmish-udagram-images-final-project-dev/*"
+                  "Resource": "arn:aws:s3:::serverless-anubmish-v2-udagram-images-final-project-dev/*"
                 },
                 {
                   "Effect": "Allow",
                   "Action": [
                     "dynamodb:Query"
                   ],
-                  "Resource": "arn:aws:dynamodb:ap-south-1:*:table/Todos-dev"
+                  "Resource": "arn:aws:dynamodb:ap-south-1:*:table/Todos-v2-dev"
                 },
                 {
                   "Effect": "Allow",
                   "Action": [
                     "dynamodb:Query"
                   ],
-                  "Resource": "arn:aws:dynamodb:ap-south-1:*:table/Todos-dev/index/UserIdIndex"
+                  "Resource": "arn:aws:dynamodb:ap-south-1:*:table/Todos-v2-dev/index/UserIdIndex"
                 }
               ]
             }
@@ -1365,14 +1365,14 @@
                     "dynamodb:UpdateItem",
                     "dynamodb:Query"
                   ],
-                  "Resource": "arn:aws:dynamodb:ap-south-1:*:table/Todos-dev"
+                  "Resource": "arn:aws:dynamodb:ap-south-1:*:table/Todos-v2-dev"
                 },
                 {
                   "Effect": "Allow",
                   "Action": [
                     "dynamodb:Query"
                   ],
-                  "Resource": "arn:aws:dynamodb:ap-south-1:*:table/Todos-dev/index/UserIdIndex"
+                  "Resource": "arn:aws:dynamodb:ap-south-1:*:table/Todos-v2-dev/index/UserIdIndex"
                 },
                 {
                   "Effect": "Allow",
@@ -1380,7 +1380,7 @@
                     "s3:PutObject",
                     "s3:GetObject"
                   ],
-                  "Resource": "arn:aws:s3:::serverless-anubmish-udagram-images-final-project-dev/*"
+                  "Resource": "arn:aws:s3:::serverless-anubmish-v2-udagram-images-final-project-dev/*"
                 },
                 {
                   "Effect": "Allow",
@@ -1388,7 +1388,7 @@
                     "dynamodb:PutItem",
                     "dynamodb:GetItem"
                   ],
-                  "Resource": "arn:aws:dynamodb:ap-south-1:*:table/Todos-dev"
+                  "Resource": "arn:aws:dynamodb:ap-south-1:*:table/Todos-v2-dev"
                 }
               ]
             }
@@ -1468,14 +1468,14 @@
                     "dynamodb:UpdateItem",
                     "dynamodb:Query"
                   ],
-                  "Resource": "arn:aws:dynamodb:ap-south-1:*:table/Todos-dev"
+                  "Resource": "arn:aws:dynamodb:ap-south-1:*:table/Todos-v2-dev"
                 },
                 {
                   "Effect": "Allow",
                   "Action": [
                     "dynamodb:Query"
                   ],
-                  "Resource": "arn:aws:dynamodb:ap-south-1:*:table/Todos-dev/index/UserIdIndex"
+                  "Resource": "arn:aws:dynamodb:ap-south-1:*:table/Todos-v2-dev/index/UserIdIndex"
                 },
                 {
                   "Effect": "Allow",
@@ -1483,7 +1483,7 @@
                     "s3:PutObject",
                     "s3:GetObject"
                   ],
-                  "Resource": "arn:aws:s3:::serverless-anubmish-udagram-images-final-project-dev/*"
+                  "Resource": "arn:aws:s3:::serverless-anubmish-v2-udagram-images-final-project-dev/*"
                 },
                 {
                   "Effect": "Allow",
@@ -1491,7 +1491,7 @@
                     "dynamodb:PutItem",
                     "dynamodb:GetItem"
                   ],
-                  "Resource": "arn:aws:dynamodb:ap-south-1:*:table/Todos-dev"
+                  "Resource": "arn:aws:dynamodb:ap-south-1:*:table/Todos-v2-dev"
                 }
               ]
             }
@@ -1571,14 +1571,14 @@
                     "dynamodb:UpdateItem",
                     "dynamodb:Query"
                   ],
-                  "Resource": "arn:aws:dynamodb:ap-south-1:*:table/Todos-dev"
+                  "Resource": "arn:aws:dynamodb:ap-south-1:*:table/Todos-v2-dev"
                 },
                 {
                   "Effect": "Allow",
                   "Action": [
                     "dynamodb:Query"
                   ],
-                  "Resource": "arn:aws:dynamodb:ap-south-1:*:table/Todos-dev/index/UserIdIndex"
+                  "Resource": "arn:aws:dynamodb:ap-south-1:*:table/Todos-v2-dev/index/UserIdIndex"
                 },
                 {
                   "Effect": "Allow",
@@ -1586,7 +1586,7 @@
                     "s3:PutObject",
                     "s3:GetObject"
                   ],
-                  "Resource": "arn:aws:s3:::serverless-anubmish-udagram-images-final-project-dev/*"
+                  "Resource": "arn:aws:s3:::serverless-anubmish-v2-udagram-images-final-project-dev/*"
                 },
                 {
                   "Effect": "Allow",
@@ -1594,7 +1594,7 @@
                     "dynamodb:DeleteItem",
                     "dynamodb:GetItem"
                   ],
-                  "Resource": "arn:aws:dynamodb:ap-south-1:*:table/Todos-dev"
+                  "Resource": "arn:aws:dynamodb:ap-south-1:*:table/Todos-v2-dev"
                 }
               ]
             }
@@ -1663,7 +1663,7 @@
           }
         ],
         "BillingMode": "PAY_PER_REQUEST",
-        "TableName": "Todos-dev",
+        "TableName": "Todos-v2-dev",
         "GlobalSecondaryIndexes": [
           {
             "IndexName": "UserIdIndex",
@@ -1683,7 +1683,7 @@
     "AttachmentsBucket": {
       "Type": "AWS::S3::Bucket",
       "Properties": {
-        "BucketName": "serverless-anubmish-udagram-images-final-project-dev",
+        "BucketName": "serverless-anubmish-v2-udagram-images-final-project-dev",
         "CorsConfiguration": {
           "CorsRules": [
             {
@@ -1718,7 +1718,7 @@
               "Effect": "Allow",
               "Principal": "*",
               "Action": "s3:GetObject",
-              "Resource": "arn:aws:s3:::serverless-anubmish-udagram-images-final-project-dev/*"
+              "Resource": "arn:aws:s3:::serverless-anubmish-v2-udagram-images-final-project-dev/*"
             }
           ]
         },
@@ -1737,37 +1737,37 @@
     "AuthLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "AuthLambdaVersionK3hMyYyWkbGBjhPfJp74kMjIkmjXtL5zet7bmydBEw"
+        "Ref": "AuthLambdaVersionkmn8QVajcDy121HgVZ19VPwSsSZTiQB2Mu99BMCg"
       }
     },
     "GetTodosLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "GetTodosLambdaVersionY8m5wDMI1FYt51R5kf7PEeHfzmEO3KJr6N83pSG1g"
+        "Ref": "GetTodosLambdaVersionmVEMnmuerDDK6fbmTlMSJTuU90l3mY7tOqKBYAr5i8"
       }
     },
     "CreateTodoLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "CreateTodoLambdaVersionp1jWz1kL9upgwkwVTwH5aNl8fautXYdzVNKINqgp8"
+        "Ref": "CreateTodoLambdaVersionfMZMKAm1jXgMj7z1MJPrMnhU1OPeXUTIfFgXzWLYM"
       }
     },
     "UpdateTodoLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "UpdateTodoLambdaVersionobtAU44NbTCIWqYUrdSWvyy3KMIvqCmxhAOerMErZiQ"
+        "Ref": "UpdateTodoLambdaVersionrKBN5MoVOJ01QuGM5VHtuwTYCuSm1PUZ8R56OxJpI"
       }
     },
     "DeleteTodoLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "DeleteTodoLambdaVersionIQTq36uGwUE8FW9e5RIoUoJqjHo61o4oTA9ZAgQY"
+        "Ref": "DeleteTodoLambdaVersionZVTEjS0TBpo8DuL1m0AC1kuP8ke6tbp97Yd3iaQ"
       }
     },
     "GenerateUploadUrlLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "GenerateUploadUrlLambdaVersionZD8nLa8prtWBxPKTUuv0lsOXIJVcmdRc0EajmAaWWI"
+        "Ref": "GenerateUploadUrlLambdaVersionAC7ps9edpUFQ69IsBzuJAp5EflpkXhgzpC3GPio5GQ"
       }
     },
     "ServiceEndpoint": {

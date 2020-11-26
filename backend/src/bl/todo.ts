@@ -76,6 +76,12 @@ export async function updateTodo(event){
     Key: {
       "todoId": todoId
     },
+	/*UpdateExpression: 'set #name = :name, #dueDate = :duedate, #done = :done',
+	ExpressionAttributeValues: {
+        ':name': updatedTodo.name,
+        ':duedate': updatedTodo.dueDate,
+        ':done': updatedTodo.done
+      },*/
     UpdateExpression: `set ${todosTable}.name = :r, ${todosTable}.dueDate=:p, ${todosTable}.done=:a`,
     ExpressionAttributeValues:{
         ":r":updatedTodo.name,
@@ -85,6 +91,7 @@ export async function updateTodo(event){
     ReturnValues:"UPDATED_NEW"
   }
 
+  // await todoAccess.updateTodo(updatedItem)
   await this.todoAccess.updateTodo(updatedItem)
   return updatedItem;
 }
