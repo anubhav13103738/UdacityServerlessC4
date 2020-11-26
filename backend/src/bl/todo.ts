@@ -71,6 +71,7 @@ export async function addAttachment(event,imageId){
 export async function updateTodo(event){
   const todoId = event.pathParameters.todoId;
   const updatedTodo = JSON.parse(event.body);
+  console.log('updatedTodo:', updatedTodo);
   const updatedItem = {
     TableName: todosTable,
     Key: {
@@ -82,16 +83,27 @@ export async function updateTodo(event){
         ':duedate': updatedTodo.dueDate,
         ':done': updatedTodo.done
       },*/
-    UpdateExpression: `set ${todosTable}.name = :r, ${todosTable}.dueDate=:p, ${todosTable}.done=:a`,
+    /*UpdateExpression: `set ${todosTable}.name = :r, ${todosTable}.dueDate=:p, ${todosTable}.done=:a`,
     ExpressionAttributeValues:{
         ":r":updatedTodo.name,
         ":p":updatedTodo.dueDate,
         ":a":updatedTodo.done
     },
-    ReturnValues:"UPDATED_NEW"
+    ReturnValues:"UPDATED_NEW"*/
+	UpdateExpression: "set #n = :r, dueDate=:p, done=:a",
+	ExpressionAttributeValues: {
+		":r": updatedTodo.name,
+		":p": updatedTodo.dueDate,
+		":a": updatedTodo.done
+	},
+	ExpressionAttributeNames: {
+		"#n": "name"
+	},
+	ReturnValues: "UPDATED_NEW"
   }
-
+  console.log('updatedTodo:', updatedTodo);
+  console.log('updatedItem:', updatedItem);
   // await todoAccess.updateTodo(updatedItem)
-  await this.todoAccess.updateTodo(updatedItem)
+  await todoAccess.updateTodo(updatedItem)
   return updatedItem;
 }
