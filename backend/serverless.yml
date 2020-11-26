@@ -183,9 +183,13 @@ resources:
             AttributeType: S
           - AttributeName: userId
             AttributeType: S
+          - AttributeName: createdAt
+            AttributeType: S
         KeySchema:
           - AttributeName: todoId
             KeyType: HASH
+          - AttributeName: createdAt
+            KeyType: RANGE
         BillingMode: PAY_PER_REQUEST
         TableName: ${self:provider.environment.TODOS_TABLE}
         GlobalSecondaryIndexes:
@@ -193,6 +197,8 @@ resources:
             KeySchema:
             - AttributeName: userId
               KeyType: HASH
+            - AttributeName: createdAt
+              KeyType: RANGE
             Projection:
               ProjectionType: ALL
               
