@@ -262,7 +262,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/serverless-todo-app/dev/1606376177816-2020-11-26T07:36:17.816Z/serverless-todo-app.zip"
+                "S3Key": "serverless/serverless-todo-app/dev/1606460942410-2020-11-27T07:09:02.410Z/serverless-todo-app.zip"
               },
               "FunctionName": "serverless-todo-app-dev-Auth",
               "Handler": "src/lambda/auth/auth0rs256Authorizer.handler",
@@ -311,7 +311,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/serverless-todo-app/dev/1606376177816-2020-11-26T07:36:17.816Z/serverless-todo-app.zip"
+                "S3Key": "serverless/serverless-todo-app/dev/1606460942410-2020-11-27T07:09:02.410Z/serverless-todo-app.zip"
               },
               "FunctionName": "serverless-todo-app-dev-GetTodos",
               "Handler": "src/lambda/http/getTodos.handler",
@@ -361,7 +361,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/serverless-todo-app/dev/1606376177816-2020-11-26T07:36:17.816Z/serverless-todo-app.zip"
+                "S3Key": "serverless/serverless-todo-app/dev/1606460942410-2020-11-27T07:09:02.410Z/serverless-todo-app.zip"
               },
               "FunctionName": "serverless-todo-app-dev-CreateTodo",
               "Handler": "src/lambda/http/createTodo.handler",
@@ -411,7 +411,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/serverless-todo-app/dev/1606376177816-2020-11-26T07:36:17.816Z/serverless-todo-app.zip"
+                "S3Key": "serverless/serverless-todo-app/dev/1606460942410-2020-11-27T07:09:02.410Z/serverless-todo-app.zip"
               },
               "FunctionName": "serverless-todo-app-dev-UpdateTodo",
               "Handler": "src/lambda/http/updateTodo.handler",
@@ -461,7 +461,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/serverless-todo-app/dev/1606376177816-2020-11-26T07:36:17.816Z/serverless-todo-app.zip"
+                "S3Key": "serverless/serverless-todo-app/dev/1606460942410-2020-11-27T07:09:02.410Z/serverless-todo-app.zip"
               },
               "FunctionName": "serverless-todo-app-dev-DeleteTodo",
               "Handler": "src/lambda/http/deleteTodo.handler",
@@ -511,7 +511,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/serverless-todo-app/dev/1606376177816-2020-11-26T07:36:17.816Z/serverless-todo-app.zip"
+                "S3Key": "serverless/serverless-todo-app/dev/1606460942410-2020-11-27T07:09:02.410Z/serverless-todo-app.zip"
               },
               "FunctionName": "serverless-todo-app-dev-GenerateUploadUrl",
               "Handler": "src/lambda/http/generateUploadUrl.handler",
@@ -829,9 +829,17 @@
                   ]
                 }
               },
-              "MethodResponses": []
+              "MethodResponses": [],
+              "RequestValidatorId": {
+                "Ref": "RequestBodyValidator"
+              },
+              "RequestModels": {
+                "application/json": "CreateTodo"
+              }
             },
-            "DependsOn": "AuthApiGatewayAuthorizer"
+            "DependsOn": [
+              "CreateTodoModel"
+            ]
           },
           "ApiGatewayMethodTodosTodoidVarPatch": {
             "Type": "AWS::ApiGateway::Method",
@@ -876,9 +884,17 @@
                   ]
                 }
               },
-              "MethodResponses": []
+              "MethodResponses": [],
+              "RequestValidatorId": {
+                "Ref": "RequestBodyValidator"
+              },
+              "RequestModels": {
+                "application/json": "UpdateTodo"
+              }
             },
-            "DependsOn": "AuthApiGatewayAuthorizer"
+            "DependsOn": [
+              "UpdateTodoModel"
+            ]
           },
           "ApiGatewayMethodTodosTodoidVarDelete": {
             "Type": "AWS::ApiGateway::Method",
@@ -1008,7 +1024,7 @@
               "Type": "TOKEN"
             }
           },
-          "ApiGatewayDeployment1606376148968": {
+          "ApiGatewayDeployment1606460914351": {
             "Type": "AWS::ApiGateway::Deployment",
             "Properties": {
               "RestApiId": {
@@ -1595,6 +1611,64 @@
               "ManagedPolicyArns": []
             }
           },
+          "CreateTodoModel": {
+            "Type": "AWS::ApiGateway::Model",
+            "Properties": {
+              "RestApiId": {
+                "Ref": "ApiGatewayRestApi"
+              },
+              "ContentType": "application/json",
+              "Name": "CreateTodo",
+              "Schema": {
+                "$schema": "http://json-schema.org/draft-07/schema",
+                "title": "todos",
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "dueDate": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "name"
+                ],
+                "additionalProperties": false
+              }
+            }
+          },
+          "UpdateTodoModel": {
+            "Type": "AWS::ApiGateway::Model",
+            "Properties": {
+              "RestApiId": {
+                "$ref": "$[\"service\"][\"provider\"][\"compiledCloudFormationTemplate\"][\"Resources\"][\"CreateTodoModel\"][\"Properties\"][\"RestApiId\"]"
+              },
+              "ContentType": "application/json",
+              "Name": "UpdateTodo",
+              "Schema": {
+                "$schema": "http://json-schema.org/draft-07/schema",
+                "title": "updateTodos",
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "dueDate": {
+                    "type": "string"
+                  },
+                  "done": {
+                    "type": "boolean"
+                  }
+                },
+                "required": [
+                  "name",
+                  "done"
+                ],
+                "additionalProperties": false
+              }
+            }
+          },
           "GatewayResponseDefault4XX": {
             "Type": "AWS::ApiGateway::GatewayResponse",
             "Properties": {
@@ -1769,6 +1843,12 @@
                 ]
               ]
             }
+          },
+          "AwsDocApiId": {
+            "Description": "API ID",
+            "Value": {
+              "$ref": "$[\"service\"][\"provider\"][\"compiledCloudFormationTemplate\"][\"Resources\"][\"CreateTodoModel\"][\"Properties\"][\"RestApiId\"]"
+            }
           }
         }
       },
@@ -1850,13 +1930,31 @@
             "title": "TODOS API",
             "description": "Serverless application for Todos application"
           }
-        }
+        },
+        "models": [
+          {
+            "name": "CreateTodo",
+            "contentType": "application/json",
+            "schema": {
+              "$ref": "$[\"service\"][\"provider\"][\"compiledCloudFormationTemplate\"][\"Resources\"][\"CreateTodoModel\"][\"Properties\"][\"Schema\"]"
+            }
+          },
+          {
+            "name": "UpdateTodo",
+            "contentType": "application/json",
+            "schema": {
+              "$ref": "$[\"service\"][\"provider\"][\"compiledCloudFormationTemplate\"][\"Resources\"][\"UpdateTodoModel\"][\"Properties\"][\"Schema\"]"
+            }
+          }
+        ]
       }
     },
     "plugins": [
       "serverless-webpack",
       "serverless-iam-roles-per-function",
-      "serverless-plugin-tracing"
+      "serverless-plugin-tracing",
+      "serverless-reqvalidator-plugin",
+      "serverless-aws-documentation"
     ],
     "pluginsData": {},
     "functions": {
@@ -1965,6 +2063,13 @@
                 "allowCredentials": false
               },
               "reqValidatorName": "RequestBodyValidator",
+              "documentation": {
+                "summary": "Create a new entry for todo.",
+                "description": "Create a new entry for todo.",
+                "requestModels": {
+                  "$ref": "$[\"service\"][\"provider\"][\"compiledCloudFormationTemplate\"][\"Resources\"][\"ApiGatewayMethodTodosPost\"][\"Properties\"][\"RequestModels\"]"
+                }
+              },
               "integration": "AWS_PROXY"
             }
           }
@@ -2018,6 +2123,14 @@
                   "X-Amz-User-Agent"
                 ],
                 "allowCredentials": false
+              },
+              "reqValidatorName": "RequestBodyValidator",
+              "documentation": {
+                "summary": "update entry for todo.",
+                "description": "update entry for todo.",
+                "requestModels": {
+                  "$ref": "$[\"service\"][\"provider\"][\"compiledCloudFormationTemplate\"][\"Resources\"][\"ApiGatewayMethodTodosTodoidVarPatch\"][\"Properties\"][\"RequestModels\"]"
+                }
               },
               "integration": "AWS_PROXY"
             }
@@ -2339,7 +2452,7 @@
     "isDashboardMonitoringPreconfigured": false
   },
   "package": {
-    "artifactDirectoryName": "serverless/serverless-todo-app/dev/1606376177816-2020-11-26T07:36:17.816Z",
+    "artifactDirectoryName": "serverless/serverless-todo-app/dev/1606460942410-2020-11-27T07:09:02.410Z",
     "artifact": ""
   }
 }

@@ -1,0 +1,18 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "title": "updateTodos",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+	"dueDate": {
+      "type": "string"
+    },
+	"done": {
+      "type": "boolean"
+    }
+  },
+  "required": ["name", "done"],
+  "additionalProperties": false
+}

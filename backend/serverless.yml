@@ -5,6 +5,8 @@ plugins:
   - serverless-webpack
   - serverless-iam-roles-per-function
   - serverless-plugin-tracing
+  - serverless-reqvalidator-plugin
+  - serverless-aws-documentation
 provider:
   tracing:
     lambda: true
@@ -65,6 +67,13 @@ custom:
         version: v1.0.0
         title: TODOS API
         description: Serverless application for Todos application
+    models:
+      - name: CreateTodo
+        contentType: application/json
+        schema: ${file(models/create-todo-model.json)}
+      - name: UpdateTodo
+        contentType: application/json
+        schema: ${file(models/update-todo-model.json)}
 functions:
 
   Auth:
@@ -101,6 +110,11 @@ functions:
           authorizer: Auth
           cors: true
           reqValidatorName: RequestBodyValidator
+          documentation:
+            summary: Create a new entry for todo.
+            description: Create a new entry for todo.
+            requestModels:
+              'application/json': CreateTodo 
     iamRoleStatementsInherit: true
     iamRoleStatements:
       - Effect: Allow
@@ -117,6 +131,12 @@ functions:
           path: todos/{todoId}
           authorizer: Auth
           cors: true
+          reqValidatorName: RequestBodyValidator
+          documentation:
+            summary: update entry for todo.
+            description: update entry for todo.
+            requestModels:
+              'application/json': UpdateTodo 
     iamRoleStatementsInherit: true
     iamRoleStatements:
       - Effect: Allow
@@ -186,9 +206,9 @@ resources:
           - AttributeName: createdAt
             AttributeType: S
         KeySchema:
-          - AttributeName: todoId
+          - AttributeName: userId
             KeyType: HASH
-          - AttributeName: createdAt
+          - AttributeName: todoId
             KeyType: RANGE
         BillingMode: PAY_PER_REQUEST
         TableName: ${self:provider.environment.TODOS_TABLE}
@@ -197,7 +217,7 @@ resources:
             KeySchema:
             - AttributeName: userId
               KeyType: HASH
-            - AttributeName: createdAt
+            - AttributeName: todoId
               KeyType: RANGE
             Projection:
               ProjectionType: ALL
